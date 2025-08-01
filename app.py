@@ -6,10 +6,9 @@ import time
 st.set_page_config(page_title="Quotex SMC Signal Bot", layout="wide")
 st.title("🔁 Quotex Auto Signal Scanner (SMC/ICT)")
 
-# ⏱ Auto-refresh every 15 seconds
-st.experimental_set_query_params(refresh=str(time.time()))
-time.sleep(1)
-st.experimental_rerun()
+# ⏱ Auto-refresh every 15 seconds using query_params
+refresh_time = str(time.time())
+st.query_params.update(refresh=refresh_time)
 
 # 📌 List of currency pairs to scan
 currency_pairs = [
@@ -42,3 +41,7 @@ for i, pair in enumerate(currency_pairs):
 
 if not signal_found:
     st.warning("🚫 No valid signals at this moment")
+
+# Wait 15 seconds, then rerun
+time.sleep(15)
+st.rerun()
