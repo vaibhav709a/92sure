@@ -1,7 +1,7 @@
 from twelvedata import TDClient
 import os
 
-# Put your TwelveData API key here if you're not using environment variables
+# Replace with your actual TwelveData API key or set it in environment
 TD_API_KEY = os.getenv("TD_API_KEY", "806dd29a09244737ae6cd1a305061557)
 
 def get_live_candles(symbol="EUR/USD", interval="1min", outputsize=5):
@@ -26,4 +26,4 @@ def get_live_candles(symbol="EUR/USD", interval="1min", outputsize=5):
             "close": float(c["close"])
         })
 
-    return formatted[::-1]
+    return formatted[::-1]  # Most recent last
